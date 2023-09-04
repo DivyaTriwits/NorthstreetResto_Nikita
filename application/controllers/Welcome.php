@@ -85,10 +85,28 @@ class Welcome extends CI_Controller {
          $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');
-
-         
-         
-
+}
+//login function
+    public function login()
+	{
+		
+		if($this->input->post('Login'))
+		{
+			$e=$this->input->post('name');
+			$p=$this->input->post('pass');
+	
+			$que=$this->db->query("select * from admin where name='".$e."' and pass='".$p."'");
+			$row = $que->num_rows();
+			if($row)
+			{
+			$this->load->view('dashboard');
+			}
+			else
+			{
+		$data['error']="<h3 style='color:red'>Invalid login details</h3>";
+			$this->load->view('adminlogin');	
+			}	
+		}
 		
 	}
 
