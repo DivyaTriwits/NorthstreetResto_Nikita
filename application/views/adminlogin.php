@@ -26,7 +26,7 @@
     
     <div class="row">
         <div class="col-md-4">
-            <form action="<?php echo base_url('index.php/Welcome/add');?>" method="post" class="form-box" id="form">
+            <form action="<?php echo base_url('index.php/Welcome/login');?>" method="post" class="form-box" id="form">
                 <div class="form-group">
                     <label>Name:</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name"/>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" id="submit" name="pass" class="btn btn-md btn-info" value="Login"/>
+                    <input type="submit" id="submit" name="Login" class="btn btn-md btn-info" value="Login"/>
                     <span id="Required" style="color:#ff0000;"></span>
                 </div>
                 <span id="error" style="color:#ff0000"></span>
@@ -45,8 +45,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+<!-- <script>
      $(document).ready(function(){
         $("#submit").click(function(){
             var name= $("#name").val();
@@ -56,10 +56,10 @@
             }else if(name == 'admin' && pass == '123'){
                  $("#form").html('<h4>User Login Successfully</h4><a href="">Back</a>').css('color','green');
              }else{
-                 $("#error").html('');
+                 $("#error").html('User Are Not Valid');
              }
         });
     });
-</script>
+</script> -->
   </body>
 </html>
