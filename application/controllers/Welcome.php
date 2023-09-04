@@ -80,44 +80,17 @@ class Welcome extends CI_Controller {
       
         $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');
-}
-    //login function
-    public function login()
-	{
-		
-		if($this->input->post('Login'))
-		{
-			$e=$this->input->post('name');
-			$p=$this->input->post('pass');
-	
-			$que=$this->db->query("select * from admin where name='".$e."' and pass='".$p."'");
-			$row = $que->num_rows();
-			if($row)
-			{
-			$this->load->view('dashboard');
-			}
-			else
-			{
-		$data['error']="<h3 style='color:red'>Invalid login details</h3>";
-			$this->load->view('adminlogin');	
-			}	
-		}
-		
-	}
-	
-	function dashboard()
-	{
-	$this->load->view('dashboard');
-	}     
+
+         
          
 
 		
-	
+	}
 
 	//Fetching Datafrom Database
 	public function registeredusers()
@@ -125,9 +98,9 @@ class Welcome extends CI_Controller {
       
         $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('registeredusers', $data);
@@ -138,9 +111,9 @@ class Welcome extends CI_Controller {
     //delete functions
     public function deletedata($id)
 {
-	 $this->load->model('select'); 
+	 $this->load->model('Select'); 
   $id1=$id;
-  $response=$this->select->deleterecords($id1);
+  $response=$this->Select->deleterecords($id1);
   if($response==true){
     echo "Data deleted successfully !";
 }
@@ -149,40 +122,47 @@ class Welcome extends CI_Controller {
   }
   $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('registeredusers', $data);
 }
-// update
 
-public function edit()
-    {
-        $this->form_validation->set_rules('firstname','FristName','trim|required');
-        $this->form_validation->set_rules('lastname','lastName','trim|required');
-        $this->form_validation->set_rules('email','Email','trim|required');
-        $this->form_validation->set_rules('password','Password','trim|required');
-        $this->form_validation->set_rules('confirmpassword','Confirmpassword','trim|required');
+//update
+public function dispdata()
+	{
+	$result['data']=$this->Hello_model->registeredusers1();
+	$this->load->view('registeredusers',$result);
+	}
+	public function updatedata($id)
+	{
+		$this->load->model('Select'); 
+	$id2=$id;
+	$result['data']=$this->Select->registeredusers1ById($id2);
+	$this->load->view('update_records',$result);
+	
+		if($this->input->post('update'))
+		{
+		$firstname=$this->input->post('firstname');
+		$lastname=$this->input->post('lastname');
+		$email=$this->input->post('email');
+		$password=$this->input->post('password');
+		$confirmpassword=$this->input->post('confirmpassword');
+		$this->Select->update_records($firstname,$lastname,$email,$password,$confirmpassword,$id);
+		echo "Date updated successfully !";
+		}
 
-        if ($this->form_validation->run() == FALSE) {
-            echo "error";
-        }
-        else{
-            $id = $this->input->post('id');
-            $this->select->editCrud($id);
-            echo "success";
-        }
-        $this->load->database();  
-         //load the model  
-         $this->load->model('select');  
-         //load the method of model  
-         $data['result']=$this->select->select();  
+		$this->load->database();  
+        
+         $this->load->model('Select');  
+   
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('registeredusers', $data);
-    }
+}
 
 	
 
@@ -205,9 +185,9 @@ public function edit()
        
          
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          
@@ -220,9 +200,9 @@ public function edit()
 		
 		  $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('addfood', $data);
@@ -238,9 +218,9 @@ public function edit()
       
         $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->getfood();  
+         $data['result']=$this->Select->getfood();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('foodmenu', $data);
@@ -268,9 +248,9 @@ public function edit()
        
          
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          
@@ -283,9 +263,9 @@ public function edit()
 		
 		  $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('addreview', $data);
@@ -299,9 +279,9 @@ public function edit()
       
         $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->getreview();  
+         $data['result']=$this->Select->getreview();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('customerreview', $data);
@@ -328,9 +308,9 @@ public function edit()
        
          
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          
@@ -343,9 +323,9 @@ public function edit()
 		
 		  $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->select();  
+         $data['result']=$this->Select->Select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('addorder', $data);
@@ -360,9 +340,9 @@ public function edit()
       
         $this->load->database();  
          //load the model  
-         $this->load->model('select');  
+         $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->select->getorder();  
+         $data['result']=$this->Select->getorder();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('vieworder', $data);

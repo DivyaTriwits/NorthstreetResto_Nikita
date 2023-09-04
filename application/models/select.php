@@ -1,36 +1,36 @@
 <?php  
-   class select extends CI_Model  
+   class Select extends CI_Model  
    {  
       function __construct()  
       {  
          // Call the Model constructor  
          parent::__construct();  
       }  
-      //we will use the select function  
+      //we will use the Select function  
       public function select()  
       {  
          //data is retrive from this query  
-         $query = $this->db->select('*')->get('log');  
+         $query = $this->db->Select('*')->get('log');  
          return $query->result();  
       } 
       public function getfood()  
       {  
          //data is retrive from this query  
-         $query = $this->db->select('*')->get('addfood');  
+         $query = $this->db->Select('*')->get('addfood');  
          return $query->result();  
       }  
 
       public function getreview()  
       {  
          //data is retrive from this query  
-         $query = $this->db->select('*')->get('review');  
+         $query = $this->db->Select('*')->get('review');  
          return $query->result();  
       } 
 
       public function getorder()  
       {  
          //data is retrive from this query  
-         $query = $this->db->select('*')->get('addorder');  
+         $query = $this->db->Select('*')->get('addorder');  
          return $query->result();  
       } 
 
@@ -57,13 +57,13 @@
    }
    function registeredusers1ById($id)
    {
-   $result = $this->db->where('id',$id)->update('log',$data);
-        return $result;
+   $query=$this->db->query("select * from form where id='".$id."'");
+   return $query->result();
    }
    /*Update*/
    function update_records($firstname,$lastname,$email,$password,$confirmpassword,$id)
    {
-   $query=$this->db->query("update log SET firstname='$firstname',lastname='$lastname',email='$email',password='$password',confirmpassword='$confirmpassword' where id='$id'");
+   $query=$this->db->query("update form  SET firstname='$firstname',lastname='$lastname',email='$email',password='$password',confirmpassword='$confirmpassword' where id='$id'");
    }
    }  
 ?> 
