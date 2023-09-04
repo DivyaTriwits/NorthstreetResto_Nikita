@@ -9,10 +9,13 @@
   </head>
 <body>
     <style>
-        body{
-            background-image: url("<?php echo base_url('/images/screen.png'); ?>");
-        }
-        h1{
+        body {
+   background-image: url("<?php echo base_url('/images/white.jpg'); ?>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+h1{
             font-size:25px;
             margin:10px 0;
         }
