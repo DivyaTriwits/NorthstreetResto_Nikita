@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2023 at 06:32 AM
+-- Generation Time: Sep 05, 2023 at 01:57 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -32,21 +32,21 @@ CREATE TABLE `addfood` (
   `name` varchar(100) NOT NULL,
   `item` varchar(100) NOT NULL,
   `price` bigint(100) NOT NULL,
-  `prod_img` varchar(200) NOT NULL
+  `picture` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `addfood`
 --
 
-INSERT INTO `addfood` (`id`, `name`, `item`, `price`, `prod_img`) VALUES
-(5, 'Vegetable Salad With Wheat Bread On The Side', 'FOOD MENU ITEM 1', 0, ''),
-(6, 'Banana Bread Overnight Oats', 'FOOD MENU ITEM 2', 270, ''),
-(7, 'Mix Vegiee Salad', 'FOOD MENU ITEM 3', 340, ''),
-(8, 'Protein Meal Kit', 'FOOD MENU ITEM 4', 352, ''),
-(9, 'Rainbow fruit & veggie platter with hummus', 'FOOD MENU ITEM 5', 265, ''),
-(10, 'Porcelain Salad with Ice cream', 'FOOD MENU ITEM 6', 295, ''),
-(11, 'Salad', '6', 250, '');
+INSERT INTO `addfood` (`id`, `name`, `item`, `price`, `picture`) VALUES
+(36, 'Pizza', 'FOOD MENU ITEM 11', 300, 'pizza.png'),
+(37, 'FrenchFries', 'FOOD MENU ITEM 1', 150, 'frenchfries.jpg'),
+(38, 'Meal', 'FOOD MENU ITEM 2', 500, 'meal.jpg'),
+(39, 'Burger', 'FOOD MENU ITEM 3', 250, 'res.jpg'),
+(40, 'Cake', 'FOOD MENU ITEM 3', 300, 'cake.png'),
+(41, 'Cake', 'FOOD MENU ITEM 3', 300, 'cake1.png'),
+(42, 'Pasta', 'FOOD MENU ITEM 5', 250, 'pasta.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,9 @@ CREATE TABLE `addorder` (
 INSERT INTO `addorder` (`id`, `fname`, `lname`, `selection`) VALUES
 (1, 'govind', 'awati', ''),
 (8, 'sagar', 'patil', 'Porcelain Salad with Ice cream'),
-(9, 'Pallavi', 'PAtil', 'Vegetable Salad With Wheat Bread On The Side');
+(10, 'bhairavi', 'bosco', 'Mix Vegiee Salad'),
+(12, 'santosh', 'dixit', 'Mix Vegiee Salad'),
+(13, 'santosh', 'dixit', 'Mix Vegiee Salad');
 
 -- --------------------------------------------------------
 
@@ -190,95 +192,26 @@ INSERT INTO `admin` (`id`, `name`, `pass`) VALUES
 (105, 'a', 'Login'),
 (106, 'Admin', 'Login'),
 (107, 'Admin', 'Login'),
-(108, 'Admin', 'Login');
+(108, 'Admin', 'Login'),
+(109, 'Admin', 'Login'),
+(110, 'Admin', 'Login'),
+(111, 'Admin', 'Login'),
+(112, 'Admin', 'Login');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `form`
 --
 
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`id`, `name`, `active`) VALUES
-(2, 'Breakfast', 1),
-(3, 'Appetizers', 1),
-(4, 'Lunch', 1),
-(5, 'Dessert', 1),
-(6, 'Drinks', 1),
-(7, 'Wraps', 1),
-(8, 'Sandwiches', 1),
-(9, 'Flatbreads', 1),
-(10, 'Combos', 1),
-(11, 'Sides', 1),
-(12, 'Burgers', 1),
-(13, 'Pizza', 1),
-(14, 'Pasta', 1),
-(15, 'Starters', 1),
-(16, 'BBQ Platters', 1),
-(17, 'Tacos', 1),
-(18, 'Vegetable Salad With Wheat Bread On The Side', 1),
-(19, 'Banana Bread Overnight Oats', 1),
-(20, 'Mix Vegiee Salad', 1),
-(21, 'Protein Meal Kit', 1),
-(22, 'Rainbow fruit & veggie platter with hummus', 1),
-(23, 'Porcelain Salad with Ice cream', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `company`
---
-
-CREATE TABLE `company` (
-  `id` int(11) NOT NULL,
-  `company_name` varchar(255) NOT NULL,
-  `service_charge_value` varchar(255) NOT NULL,
-  `vat_charge_value` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `message` text NOT NULL,
-  `currency` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `company`
---
-
-INSERT INTO `company` (`id`, `company_name`, `service_charge_value`, `vat_charge_value`, `address`, `phone`, `country`, `message`, `currency`) VALUES
-(1, 'Northstreet restaurant', '3', '13', '6996 Blecker Street', '3012458800', 'United States', 'Restaurant Management System in PHP with CodeIgniter Framework.', 'USD');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `groups`
---
-
-CREATE TABLE `groups` (
-  `id` int(11) NOT NULL,
-  `group_name` varchar(255) NOT NULL,
-  `permission` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `group_name`, `permission`) VALUES
-(1, 'Super Administrator', 'a:32:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:11:\"createStore\";i:9;s:11:\"updateStore\";i:10;s:9:\"viewStore\";i:11;s:11:\"deleteStore\";i:12;s:11:\"createTable\";i:13;s:11:\"updateTable\";i:14;s:9:\"viewTable\";i:15;s:11:\"deleteTable\";i:16;s:14:\"createCategory\";i:17;s:14:\"updateCategory\";i:18;s:12:\"viewCategory\";i:19;s:14:\"deleteCategory\";i:20;s:13:\"createProduct\";i:21;s:13:\"updateProduct\";i:22;s:11:\"viewProduct\";i:23;s:13:\"deleteProduct\";i:24;s:11:\"createOrder\";i:25;s:11:\"updateOrder\";i:26;s:9:\"viewOrder\";i:27;s:11:\"deleteOrder\";i:28;s:10:\"viewReport\";i:29;s:13:\"updateCompany\";i:30;s:11:\"viewProfile\";i:31;s:13:\"updateSetting\";}'),
-(4, 'Members', 'a:9:{i:0;s:9:\"viewStore\";i:1;s:11:\"deleteStore\";i:2;s:9:\"viewTable\";i:3;s:11:\"deleteTable\";i:4;s:12:\"viewCategory\";i:5;s:11:\"viewProduct\";i:6;s:11:\"createOrder\";i:7;s:11:\"updateOrder\";i:8;s:9:\"viewOrder\";}'),
-(5, 'Staff', 'a:6:{i:0;s:9:\"viewTable\";i:1;s:11:\"viewProduct\";i:2;s:11:\"createOrder\";i:3;s:11:\"updateOrder\";i:4;s:9:\"viewOrder\";i:5;s:11:\"viewProfile\";}'),
-(6, 'Manager', 'a:19:{i:0;s:8:\"viewUser\";i:1;s:11:\"createGroup\";i:2;s:11:\"updateGroup\";i:3;s:9:\"viewGroup\";i:4;s:11:\"deleteGroup\";i:5;s:9:\"viewStore\";i:6;s:11:\"createTable\";i:7;s:11:\"updateTable\";i:8;s:9:\"viewTable\";i:9;s:11:\"deleteTable\";i:10;s:14:\"updateCategory\";i:11;s:13:\"createProduct\";i:12;s:13:\"updateProduct\";i:13;s:11:\"viewProduct\";i:14;s:13:\"deleteProduct\";i:15;s:9:\"viewOrder\";i:16;s:11:\"deleteOrder\";i:17;s:10:\"viewReport\";i:18;s:11:\"viewProfile\";}'),
-(7, 'Cashier', 'a:8:{i:0;s:8:\"viewUser\";i:1;s:11:\"createOrder\";i:2;s:11:\"updateOrder\";i:3;s:9:\"viewOrder\";i:4;s:11:\"deleteOrder\";i:5;s:10:\"viewReport\";i:6;s:11:\"viewProfile\";i:7;s:13:\"updateSetting\";}');
+CREATE TABLE `form` (
+  `id` int(200) NOT NULL,
+  `firstname` varchar(200) NOT NULL,
+  `lastname` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(11) NOT NULL,
+  `confirmpassword` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -302,9 +235,7 @@ CREATE TABLE `log` (
 INSERT INTO `log` (`id`, `firstname`, `lastname`, `email`, `password`, `confirmpassword`) VALUES
 (38, 'rakshita', 'pattar', 'john@gmail.com', '123', '123'),
 (48, 'www', 'wsw', 'www@gmail.com', '4444', '4444'),
-(51, 'kavita', 'Biradar', 'senedu@hms.com', 'qwwq', 'qwwq'),
-(52, 'abhishek', 'Biradar', 'rushirpatil14@gmail.com', '123', '123'),
-(53, 'surekha', 'Biradar', 'admin@gmail.com', '123', '123');
+(51, 'kavita', 'Biradar', 'senedu@hms.com', 'qwwq', 'qwwq');
 
 -- --------------------------------------------------------
 
@@ -458,7 +389,8 @@ INSERT INTO `review` (`id`, `firstname`, `lastname`, `reviewinp`) VALUES
 (1, 'kavita', 'pattar', 'good'),
 (5, 'Ross ', 'Lee', 'Very Good Test'),
 (6, 'Sara', 'Gupta', 'Maintance is very nice'),
-(7, 'John ', ' See', ' Good Test Good Quality');
+(7, 'John ', ' See', ' Good Test Good Quality'),
+(8, 'raghav', 'rawat', 'Very nice');
 
 -- --------------------------------------------------------
 
@@ -486,65 +418,6 @@ INSERT INTO `stores` (`id`, `name`, `active`) VALUES
 (14, 'Hunger\'s Hub', 1),
 (15, 'Hell\'s Kitchen', 1),
 (16, 'The Second Wife', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tables`
---
-
-CREATE TABLE `tables` (
-  `id` int(11) NOT NULL,
-  `table_name` varchar(255) NOT NULL,
-  `capacity` varchar(255) NOT NULL,
-  `available` int(11) NOT NULL,
-  `active` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `tables`
---
-
-INSERT INTO `tables` (`id`, `table_name`, `capacity`, `available`, `active`, `store_id`) VALUES
-(1, 'T 10', '4', 1, 1, 1),
-(2, 'T 11', '6', 1, 1, 1),
-(3, 'T 12', '4', 1, 1, 1),
-(4, 'P4', '2', 1, 1, 2),
-(5, 'P6', '4', 1, 1, 2),
-(6, 'P12', '4', 1, 1, 2),
-(7, 'C1', '4', 1, 1, 3),
-(8, 'C2', '4', 1, 1, 3),
-(9, 'C3', '', 1, 1, 3),
-(10, 'BG4', '2', 2, 1, 4),
-(11, 'BG5', '4', 2, 1, 4),
-(12, 'BG8', '6', 1, 1, 4),
-(13, 'TK4', '4', 1, 1, 5),
-(14, 'TK46', '4', 1, 1, 5),
-(15, 'TK10', '6', 1, 1, 5),
-(16, 'PT2', '4', 1, 1, 6),
-(17, 'PT4', '4', 1, 1, 6),
-(18, 'SR1', '4', 1, 1, 7),
-(19, 'SR4', '6', 1, 1, 7),
-(20, 'TCC5', '4', 1, 1, 8),
-(21, 'TCC9', '', 1, 1, 8),
-(22, 'M15', '6', 1, 1, 9),
-(23, 'M20', '8', 2, 1, 9),
-(24, 'CCR5', '4', 1, 1, 10),
-(25, 'CCR6', '8', 1, 1, 10),
-(26, 'FG5', '6', 1, 1, 11),
-(27, 'FG8', '8', 1, 1, 11),
-(28, 'DP2', '4', 1, 1, 12),
-(29, 'DP3', '8', 1, 1, 12),
-(30, 'FR15', '4', 2, 1, 13),
-(31, 'FR19', '8', 1, 1, 13),
-(32, 'FR20', '2', 1, 1, 13),
-(33, 'ER4', '2', 1, 1, 16),
-(34, 'ER6', '4', 1, 1, 16),
-(35, 'ER8', '6', 1, 1, 16),
-(36, 'HK8', '4', 1, 1, 15),
-(37, 'ZE9', '6', 1, 1, 14),
-(38, '1', '4', 1, 1, 16);
 
 -- --------------------------------------------------------
 
@@ -623,21 +496,9 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category`
+-- Indexes for table `form`
 --
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
+ALTER TABLE `form`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -683,12 +544,6 @@ ALTER TABLE `stores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tables`
---
-ALTER TABLE `tables`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -708,37 +563,25 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT for table `addfood`
 --
 ALTER TABLE `addfood`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `addorder`
 --
 ALTER TABLE `addorder`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT for table `form`
 --
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `company`
---
-ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `groups`
---
-ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `form`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log`
@@ -774,19 +617,13 @@ ALTER TABLE `res`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `tables`
---
-ALTER TABLE `tables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
