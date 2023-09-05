@@ -639,13 +639,13 @@ header {
   
                     
 
-  
+  <a href="<?php echo base_url('index.php/Welcome/');?>">
                     <div class="nav-option logout">
                         <img src=
 "https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png"
                             class="nav-img"
                             alt="logout">
-                        <h3>Logout</h3>
+                        <h3>Logout</h3></a>
                     </div>
  
                 </div>

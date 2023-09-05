@@ -674,72 +674,40 @@ body {
         <section id="food-menu">
             <h2 class="food-menu-heading">Food Menu</h2>
             <div class="food-menu-container container">
+                <?php  
+                    foreach ($result as $row)  
+                    {  
+                    ?>
                 <div class="food-menu-item">
                     <div class="food-img">
-                        <img src="https://i.postimg.cc/wTLMsvSQ/food-menu1.jpg" alt="menu-1">
+                        <img src=" <?php echo base_url('uploads/images/'.$row->picture);?>" alt="menu-1">
                     </div>
                     <div class="food-description">
-                        <h2 class="food-title">Food Menu Item 1</h2>
-                        <p>Vegetable Salad With Wheat Bread On The Side.</p>
-                        <p class="food-price"> Price: &#8377;250 </p>
+                        <h2 class="food-title"><?php echo $row->item;?></h2>
+                        <p><?php echo $row->name;?></p>
+                        <p class="food-price"> Price: <?php echo $row->price;?></p>
                         
                     </div>
-                </div>
-                <div class="food-menu-item">
-                    <div class="food-img">
-                        <img src="https://i.postimg.cc/sgzXPzzd/food-menu2.jpg" alt="menu-2">
-                    </div>
-                    <div class="food-description">
-                        <h2 class="food-title">Food Menu Item 2</h2>
-                        <p>Banana Bread Overnight Oats.</p>
-                        <p class="food-price"> Price: &#8377;270 </p>
+                    
                         
-                    </div>
-                </div>
-                <div class="food-menu-item">
-                    <div class="food-img">
-                        <img src="https://i.postimg.cc/8zbCtYkF/food-menu3.jpg" alt="menu-3">
-                    </div>
-                    <div class="food-description">
-                        <h2 class="food-title">Food Menu Item 3</h2>
-                        <p>Mix Vegiee Salad.</p>
-                        <p class="food-price"> Price: &#8377;340 </p>
                         
-                    </div>
+ 
+                       
+                     </div>
+                     <?php }  
+                 ?>
                 </div>
-                <div class="food-menu-item">
-                    <div class="food-img">
-                        <img src="https://i.postimg.cc/Yq98p5Z7/food-menu4.jpg" alt="menu-4">
-                    </div>
-                    <div class="food-description">
-                        <h2 class="food-title">Food Menu Item 4</h2>
-                        <p>Protein Meal Kit .</p>
-                        <p class="food-price"> Price: &#8377;352 </p>
-                        
-                    </div>
-                </div>
-                <div class="food-menu-item">
-                    <div class="food-img">
-                        <img src="https://i.postimg.cc/KYnDqxkP/food-menu5.jpg" alt="menu-5">
-                    </div>
-                    <div class="food-description">
-                        <h2 class="food-title">Food Menu Item 5</h2>
-                        <p>Rainbow fruit & veggie platter with hummus.</p>
-                        <p class="food-price"> Price: &#8377;265 </p>
-                        
-                    </div>
-                </div>
-                <div class="food-menu-item">
-                    <div class="food-img">
-                        <img src="https://i.postimg.cc/Jnxc8xQt/food-menu6.jpg" alt="menu-6">
-                    </div>
-                    <div class="food-description">
-                        <h2 class="food-title">Food Menu Item 6</h2>
-                        <p>Porcelain Salad with Ice cream.</p>
-                        <p class="food-price"> Price: &#8377;295 </p>
 
-                    </div>
-                </div>
+
+
+
+
+
+                
+                
+                
+                
+                
             </div>
         </section>
     <!-- food menu ends -->

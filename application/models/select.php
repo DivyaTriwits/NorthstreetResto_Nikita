@@ -18,7 +18,30 @@
          //data is retrive from this query  
          $query = $this->db->Select('*')->get('addfood');  
          return $query->result();  
+      } 
+      //food
+      public function food()  
+      {  
+         //data is retrive from this query  
+         $query = $this->db->Select('*')->get('addfood');  
+         return $query->result();  
       }  
+
+      //upload file
+      public function insert($data = array()){
+        if(!array_key_exists("created",$data)){
+            $data['created'] = date("Y-m-d H:i:s");
+        }
+        if(!array_key_exists("modified",$data)){
+            $data['modified'] = date("Y-m-d H:i:s");
+        }
+        $insert = $this->db->insert($this->addfood,$data);
+        if($insert){
+            return $this->db->insert_id();
+        }else{
+            return false;    
+        }
+    } 
 
       public function getreview()  
       {  

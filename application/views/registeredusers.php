@@ -9,7 +9,7 @@
  
                 <div class="report-body">
                     <div class="report-topic-heading">
-
+                    
                       
                      
                      <h3 class="t-op">Fristname</h3>
@@ -40,7 +40,8 @@
                             
 
                             <h3>
-                       <a href="<?php echo base_url('index.php/Welcome/updatedata/'.$row->id) ?>">Update</a>        
+                              
+                       <a href="<?php echo base_url('index.php/Welcome/edit/'.$row->id) ?>">Update</a>        
                       <a href="<?php echo base_url('index.php/Welcome/deletedata/'.$row->id) ?>">  
                         Delete
                     </a>

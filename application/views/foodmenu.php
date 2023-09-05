@@ -4,7 +4,7 @@
                 <div class="report-header">
                 <h1 class="recent-Articles">Food Menu</h1>
 
-                    <button class="view">View All</button>
+                    
                 </div>
  
                 <div class="report-body">
@@ -13,6 +13,7 @@
                      <h3 class="t-op" style="width:20px!important;">Item</h3>
                      <h3 class="t-op" style="width:20px!important;">Name</h3>
                      <h3 class="t-op">Price</h3>
+                     <h3 class="t-op">Picture</h3>
                      
                      
 
@@ -21,14 +22,16 @@
                      
                     <div class="items">
                      <?php  
-                    foreach ($result as $row)  
+                    foreach ($result as $row) 
+                       
                     {  
                     ?>
                         <div class="item1">
                            <h3 class="t-op-nextlvl"><?php echo $row->item;?></h3>
                            <h3 class="t-op-nextlvl"><?php echo $row->name;?></h3>
                            <h3 class="t-op-nextlvl"><?php echo $row->price;?></h3>
-                           
+                           <h3 class="t-op-nextlvl"><img src="<?php echo $row->picture;?>"></h3>
+                              
                            
                           
                            
@@ -43,9 +46,6 @@
  
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
     
  

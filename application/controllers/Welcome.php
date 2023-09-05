@@ -21,8 +21,11 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 
-		
-		$this->load->view('main');
+        $this->load->database();  
+         //load the model  
+         $this->load->model('Select'); 
+		 $data['result']=$this->Select->food(); 
+		$this->load->view('main',$data);
 	
 
 
@@ -82,7 +85,7 @@ class Welcome extends CI_Controller {
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->select();  
          //return the data in view
          $this->load->view('dashboard');
 }
@@ -118,7 +121,7 @@ class Welcome extends CI_Controller {
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('registeredusers', $data);
@@ -142,7 +145,7 @@ class Welcome extends CI_Controller {
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('registeredusers', $data);
@@ -176,7 +179,7 @@ public function dispdata()
         
          $this->load->model('Select');  
    
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('registeredusers', $data);
@@ -190,29 +193,60 @@ public function dispdata()
 	{
 		
 		 $this->load->database(); 
-		$data = [
-            'name' => $this->input->post('name'),
-            'item'  => $this->input->post('item'),
-            'price' => $this->input->post('price')
-            
-        ];
- 
-        $result = $this->db->insert('addfood', $data);
-       
-      
-       
+		
          
-         //load the model  
-         $this->load->model('Select');  
-         //load the method of model  
-         $data['result']=$this->Select->Select();  
+       
+         if(!empty($_FILES['picture']['name'])){
+                $config['upload_path'] = 'uploads/images/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['file_name'] = $_FILES['picture']['name'];
+                
+                //Load upload library and initialize configuration
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config);
+                
+                if($this->upload->do_upload('picture')){
+                    $uploadData = $this->upload->data();
+                    $picture = $uploadData['file_name'];
+                }else{
+                    $picture = '';
+                }
+            }else{
+                $picture = '';
+            }
+            
+            //Prepare array of user data
+            $userData = array(
+                'name' => $this->input->post('name'),
+                'item' => $this->input->post('item'),
+                'price' => $this->input->post('price'),
+                'picture' => $picture
+            );
+            
+            //Pass user data to model
+            $insertUserData = $this->db->insert('addfood',$userData);
+            
+            //Storing insertion status message.
+            if($insertUserData){
+                $this->session->set_flashdata('success_msg', 'User data have been added successfully.');
+            }else{
+                $this->session->set_flashdata('error_msg', 'Some problems occured, please try again.');
+            }
+        $this->load->model('Select');  
+   
+         $data['result']=$this->Select->select();  
          //return the data in view
-         $this->load->view('dashboard');  
+         $this->load->view('dashboard'); 
+        //Form for adding user data
+        $this->load->view('addfood');
+    }
+
+         
          
          
 
 		
-	}
+	
 	public function addfoodview()
 	{
 		
@@ -220,7 +254,7 @@ public function dispdata()
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->food();   
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('addfood', $data);
@@ -247,7 +281,6 @@ public function dispdata()
 		
 	}
 	
-
 	
 
 	public function write()
@@ -268,7 +301,7 @@ public function dispdata()
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->select();  
          //return the data in view
          $this->load->view('dashboard');  
          
@@ -283,7 +316,7 @@ public function dispdata()
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->select();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('addreview', $data);
@@ -328,7 +361,7 @@ public function dispdata()
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->getreview();  
          //return the data in view
          $this->load->view('dashboard');  
          
@@ -343,7 +376,7 @@ public function dispdata()
          //load the model  
          $this->load->model('Select');  
          //load the method of model  
-         $data['result']=$this->Select->Select();  
+         $data['result']=$this->Select->getreview();  
          //return the data in view
          $this->load->view('dashboard');  
          $this->load->view('addorder', $data);
